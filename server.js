@@ -25,14 +25,14 @@ app.get('/movie', function handleGetMovie(req, res) {
     if (req.query.genre) {
         response = response.filter(movie =>
             // case insensitive searching
-            movie.genre == (req.query.genre)
+            movie.genre.toLowerCase().includes(req.query.genre.toLowerCase())
         )
     }
 
     // filter our pokemon by type if type query param is present
     if (req.query.country) {
         response = response.filter(movie =>
-            movie.country.includes(req.query.country)
+            movie.country.toLowerCase().includes(req.query.country.toLowerCase())
         )
     }
 
